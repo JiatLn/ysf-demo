@@ -24,6 +24,8 @@ yarn run dev
 
 - [dayjs](https://dayjs.gitee.io/zh-CN/)
 
+- [vant](https://vant-contrib.gitee.io/vant/)
+
 ## License
 
 [MIT](./LICENSE) License © 2022-Present [JiatLn](https://github.com/JiatLn)

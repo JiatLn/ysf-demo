@@ -1,55 +1,51 @@
 <template>
-  <div class="warpper">
-    <div flex items-center gap-2>
-      <section flex>
-        <div class="box">
-          <p>unocss</p>
-          <div text-red-400 uppercase>Home Page</div>
-        </div>
-      </section>
-      <section class="flex">
-        <div class="box">
-          <p>Vue-router@4</p>
-          <div flex justify-between space-x-4>
-            <router-link class="btn" :to="{ name: 'Login' }">Login</router-link>
-            <router-link class="btn" :to="{ name: 'Register' }">Register</router-link>
-          </div>
-        </div>
-      </section>
-      <section class="flex">
-        <div class="box">
-          <p>iconify</p>
-          <AppIcon icon="flat-color-icons:home" text-30px />
-        </div>
-      </section>
-      <section flex>
-        <div class="box">
-          <p>Pinia</p>
-          <span>isLogin: {{ userStore.isLogin }}</span>
-        </div>
-      </section>
-      <section flex>
-        <div class="box">
-          <p>TSX support</p>
-        </div>
-      </section>
-    </div>
-    <p mt-8 text-gray-400>This is a demo page, you can clear it and start coding~ :)</p>
-  </div>
+  <p text-center py-3>hello ysf</p>
+  <section flex-c gap-2>
+    <UPButton
+      :timeout="2000"
+      class="customBtn"
+      scope="scope.mobile"
+      text="授权mobile"
+      btn
+      @click="btnClick"
+    />
+    <UPButton
+      :timeout="2000"
+      class="customBtn"
+      scope="scope.auth"
+      text="授权auth"
+      btn
+      @click="btnClick"
+    />
+    <button btn @click="wakeShare">share</button>
+  </section>
 </template>
 
 <script setup lang="ts">
-  import useUserStore from '@/store/modules/useUserStore';
+  import { Toast } from 'vant';
 
-  const userStore = useUserStore();
+  function btnClick(isSuccess: boolean, result: any) {
+    console.log(result);
+    if (!isSuccess) {
+      Toast.fail(result.errmsg);
+    } else {
+      Toast.success('授权成功');
+    }
+  }
+
+  function wakeShare() {
+    console.log(111);
+    upsdk.pluginReady(function () {
+      console.log(222);
+      upsdk.showFlashInfo({
+        msg: '绑定银行卡成功',
+      });
+      upsdk.createWebView({
+        url: 'https://qxwouffjun.feishu.cn/docs/doccnCYISz6edfYReFiF6DZ4SSY', // 新webview容器中运行的目标页面地址
+        isFinish: '1', //是否关闭当前的窗口,'1':关闭，'0':不关闭
+      });
+    });
+  }
 </script>
 
-<style lang="scss" scoped>
-  .warpper {
-    @apply h-full w-full flex flex-col justify-center items-center;
-  }
-  .box {
-    @apply py-8 px-8 flex flex-col justify-center items-center bg-white
-    rounded-xl shadow-md space-y-2;
-  }
-</style>
+<style lang="scss" scoped></style>

@@ -8,6 +8,9 @@ declare module '@vue/runtime-core' {
     LazyImg: typeof import('./components/common/LazyImg.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheHeader: typeof import('./components/App/TheHeader.vue')['default']
+    TheTabbar: typeof import('./components/App/TheTabbar.vue')['default']
+    UPButton: typeof import('./components/App/UPButton.vue')['default']
   }
 }
 

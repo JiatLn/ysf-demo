@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
+    "build-tsc": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "prepare": "husky install"
   },
@@ -23,6 +24,7 @@
     "unocss": "^0.31.2",
     "unplugin-auto-import": "^0.7.1",
     "unplugin-vue-components": "^0.19.2",
+    "vant": "^3.4.8",
     "vue": "^3.2.32",
     "vue-router": "4"
   },
@@ -43,6 +45,7 @@
     "typescript": "^4.6.3",
     "vite": "^2.9.4",
     "vite-plugin-purge-icons": "^0.8.1",
+    "vite-plugin-style-import": "1.4.1",
     "vite-plugin-windicss": "^1.8.4",
     "vue-eslint-parser": "^8.3.0",
     "vue-tsc": "^0.34.6"

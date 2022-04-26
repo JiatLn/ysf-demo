@@ -8,6 +8,8 @@ import Components from 'unplugin-vue-components/vite';
 import PurgeIcons from 'vite-plugin-purge-icons';
 import Unocss from 'unocss/vite';
 
+import styleImport, { VantResolve } from 'vite-plugin-style-import';
+
 import * as path from 'path';
 
 // https://vitejs.dev/config/
@@ -20,10 +22,14 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    base: '/up/',
     plugins: [
       vue(),
       vueJsx(),
       Unocss(),
+      styleImport({
+        resolves: [VantResolve()],
+      }),
       legacy({
         targets: ['ie >= 11'],
         additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
