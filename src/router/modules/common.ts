@@ -4,7 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/pages/Home.vue'),
+    component: () => import('@/pages/Home/index.vue'),
     meta: {
       title: '首页',
     },
@@ -15,6 +15,14 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/Store/index.vue'),
     meta: {
       title: '商城',
+    },
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: () => import('@/pages/Category/index.vue'),
+    meta: {
+      title: '分类',
     },
   },
   {

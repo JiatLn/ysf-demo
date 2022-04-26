@@ -1,4 +1,6 @@
 <template>
+  <div>大风车转转转</div>
+  <button btn @click="toStore">兑换商城</button>
   <p text-center py-3>hello ysf</p>
   <section flex-c gap-2>
     <UPButton
@@ -24,6 +26,14 @@
 <script setup lang="ts">
   import { Toast } from 'vant';
 
+  const router = useRouter();
+
+  function toStore() {
+    router.push({
+      name: 'Store',
+    });
+  }
+
   function btnClick(isSuccess: boolean, result: any) {
     console.log(result);
     if (!isSuccess) {
@@ -35,17 +45,29 @@
 
   function wakeShare() {
     console.log(111);
-    upsdk.pluginReady(function () {
-      console.log(222);
+    upsdk.pluginReady(() => {
       upsdk.showFlashInfo({
-        msg: '绑定银行卡成功',
+        msg: '测试支付成功！',
       });
-      upsdk.createWebView({
-        url: 'https://qxwouffjun.feishu.cn/docs/doccnCYISz6edfYReFiF6DZ4SSY', // 新webview容器中运行的目标页面地址
-        isFinish: '1', //是否关闭当前的窗口,'1':关闭，'0':不关闭
+      upsdk.pay({
+        tn: 'that.message',
+        success: () => {
+          // 支付成功, 开发者执行后续操作。
+          upsdk.showFlashInfo({
+            msg: '测试支付成功！',
+          });
+        },
+        fail: (err) => {
+          // 支付失败, err.msg 是失败原因描述, 比如TN号不合法, 或者用户取消了交易 等等。
+          upsdk.showFlashInfo({
+            msg: err.msg,
+          });
+        },
       });
     });
   }
 </script>
+
+<style scoped lang="scss"></style>
 
 <style lang="scss" scoped></style>
