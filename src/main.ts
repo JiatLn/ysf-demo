@@ -16,8 +16,7 @@ import { Tabbar, TabbarItem, Button, Toast } from 'vant';
 import './assets/js/upsdk.js';
 
 // import vueCupUi from 'vue-cup-ui/lib/vue-cup-ui.umd.js';
-
-import 'vue-cup-ui/lib/vue-cup-ui.css';
+// import 'vue-cup-ui/lib/vue-cup-ui.css';
 
 const app = createApp(App);
 const pinia = createPinia();
