@@ -12,8 +12,6 @@ import '@unocss/reset/tailwind.css';
 import '@purge-icons/generated';
 import '@/assets/styles/_global.scss';
 
-import '@/assets/js/upsdk.js';
-
 const app = createApp(App);
 const pinia = createPinia();
 
